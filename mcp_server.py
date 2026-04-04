@@ -24,6 +24,13 @@ mcp = FastMCP("pushback", instructions="""
 PushBack gives you the feedback your team won't give you.
 Use these tools to analyze documents, URLs, or text with Big 4-level scrutiny.
 The analysis applies industry-specific checklists and adversarial questioning.
+
+IMPORTANT: Always check ALL relevant verticals, not just one. Most documents span
+multiple domains. For example, source code should be reviewed with the developer
+vertical AND any domain-specific verticals (quant_research for trading/math,
+finance_accounting for financial logic, cybersecurity for auth/secrets). Run
+analyze_with_vertical once per relevant vertical and combine the findings.
+Single-vertical analysis misses cross-domain bugs that matter most.
 """)
 
 # ── System prompt used for all analyses ──
@@ -188,7 +195,7 @@ if __name__ == "__main__":
     import sys
     if "--http" in sys.argv:
         import uvicorn
-        port = int(os.environ.get("PORT", os.environ.get("MCP_PORT", 8001)))
+        port = int(os.environ.get("MCP_PORT", 8001))
         print(f"PushBack MCP server (HTTP/SSE) on port {port}")
         uvicorn.run(app, host="0.0.0.0", port=port)
     else:
