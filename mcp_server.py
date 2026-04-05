@@ -67,7 +67,7 @@ def _detect_verticals(text: str) -> str:
         "vfx_film": ["vfx", "shot", "render", "production", "animation", "studio"],
         "corporate_insurance": ["insurance", "premium", "d&o", "liability", "broker"],
         "project_management": ["project", "agile", "scrum", "milestone", "sprint", "gantt"],
-        "design_creative": ["design", "typography", "color", "layout", "responsive", "ui", "ux"],
+        "design_creative": ["design", "typography", "color", "layout", "responsive", "ui", "ux", "chart", "slide", "presentation", "deck"],
         "finance_accounting": ["revenue", "budget", "tax", "financial", "profit", "balance sheet"],
         "cybersecurity": ["security", "vulnerability", "firewall", "mfa", "breach", "encryption"],
         "legal_contracts": ["contract", "clause", "indemnification", "liability", "nda", "ip ownership"],
@@ -212,7 +212,7 @@ if __name__ == "__main__":
     import sys
     if "--http" in sys.argv:
         import uvicorn
-        port = int(os.environ.get("PORT", os.environ.get("MCP_PORT", 8001)))
+        port = int(os.environ.get("MCP_PORT", 8001))
         print(f"PushBack MCP server (HTTP/SSE) on port {port}")
         uvicorn.run(app, host="0.0.0.0", port=port)
     else:
